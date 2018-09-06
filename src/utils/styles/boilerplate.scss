@@ -1,0 +1,191 @@
+// BULMA
+@import "bulma/sass/utilities/_all";
+@import "bulma/sass/base/_all";
+@import "bulma/sass/grid/_all";
+@import "bulma/sass/layout/_all";
+@import "bulma/sass/elements/container";
+@import "bulma/sass/components/level";
+@import "bulma/sass/components/navbar";
+
+// responsive values
+$tablet-width: $tablet;
+$desktop-width: $desktop;
+$widescreen-width: $widescreen;
+
+
+// Dala Base Styles
+@import "./all";
+
+.italianno {
+  font-family: 'Italianno', cursive;
+  font-weight: normal;
+  font-style: normal;
+}
+.raleway {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.raleway-medium {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+.raleway-bold {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+body {
+  @include body-text;
+
+  font-variant-ligatures: common-ligatures;
+  -moz-font-feature-settings: "liga", "clig";
+  -webkit-font-feature-settings: "liga", "clig";
+  font-feature-settings: "liga", "clig";
+}
+
+.mainBG {
+  z-index: 0;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+.mainBG-overlay {
+  @include position($position: absolute, $cover: true);
+  z-index: 1;
+  opacity: 0.25;
+}
+.main-content-wrapper {
+  background: white;
+  padding: 32px 24px 24px 24px;
+
+  -webkit-box-shadow: $layout-elevation-2;
+  -moz-box-shadow: $layout-elevation-2;
+  box-shadow: $layout-elevation-2;
+
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+}
+
+.call-to-action {
+  @include input;
+  @include raleway-bold;
+  @include transition($prop: background, $time: 0.2s);
+
+  line-height: 48px;
+  background: #d84b5b;
+  color: #ffebd8;
+  border: none;
+  outline: none;
+  padding-left: 16px;
+  padding-right: 16px;
+  cursor: pointer;
+
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+}
+
+.call-to-action:hover {
+  background: #a02d3c;
+}
+
+.call-to-action:active {
+  background: #861827;
+}
+
+.full-width-input {
+  width: 100% !important;
+}
+
+.step-header {
+  @include italiano;
+
+  font-size: $typography-size-step-up-3;
+  color: #eb8ea0;
+}
+
+.step-name {
+  @include body-text;
+  @include raleway-bold;
+
+  text-transform: uppercase;
+  color: #b3d8d8;
+}
+.step-name.active {
+  color: #2d7d7d;
+}
+.add-dash {
+  position: relative;
+}
+.add-dash:before {
+  position: absolute;
+  content: '';
+  display: block;
+  height: 1px;
+  background: #b3d8d8;
+  top: 24px;
+  right: 80%;
+  width: 40%;
+}
+.add-dash:after {
+  position: absolute;
+  content: '';
+  display: block;
+  height: 1px;
+  background: #b3d8d8;
+  top: 24px;
+  left: 80%;
+  width: 40%;
+}
+
+.detail-drawer-button {
+  @include raleway-bold;
+  @include position($position: fixed, $top: 50%);
+  @include transition($prop: all, $time: 0.2s);
+
+  color: #ffebd8;
+  text-transform: uppercase;
+  padding: 0 16px;
+  line-height: $typography-lineHeight-step-up-2;
+  background: #d84b5b;
+  cursor: pointer;
+  z-index: 1000;
+
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+.detail-drawer-button:hover {
+  background: #a02d3c;
+}
+.map-wrapper {
+  .mapouter{
+    text-align:right;
+    height:224px;
+    width:100%;
+  }
+  .gmap_canvas {
+    overflow:hidden;
+    background:none!important;
+    height:224px;
+    width:100%;
+  }
+}
+
+.transparent {
+  opacity: 0;
+}
+.opaque {
+  opacity: 1;
+}
