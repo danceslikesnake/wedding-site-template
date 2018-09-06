@@ -1,0 +1,39 @@
+@import "../../utils/styles/all";
+
+#FullDetails {
+  .divider {
+    border-top:2px dashed #ffebd8;
+    margin-bottom: 16px;
+  }
+  .qr-code {
+    canvas {
+      width: 100% !important;
+      height: 100% !important;
+    }
+  }
+  h2 {
+    @include raleway-bold;
+
+    font-size: $typography-size-step-up-2;
+    line-height: $typography-lineHeight-step-up-2;
+    text-transform: uppercase;
+    color: #2d7d7d;
+  }
+  .confirmation-number {
+    strong {
+      color: #2d7d7d;
+      font-size: $typography-size-step-up-1;
+      line-height: $typography-lineHeight-step-up-1;
+    }
+  }
+  .guests-attending {
+    padding-bottom: 16px;
+  }
+  .final-details-label {
+    @include raleway-bold;
+
+    color: #2d7d7d;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+}

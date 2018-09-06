@@ -1,0 +1,97 @@
+@import "../../utils/styles/all";
+
+#DetailDrawer {
+  @include transition($prop: right, $time: 0.2s, $easing: ease-out);
+  @include position($position: fixed, $top: 0, $bottom: 0);
+
+  width: 400px;
+  background: #d84b5b;
+  z-index: 1000;
+  overflow: auto;
+
+  -webkit-box-shadow: $layout-elevation-4;
+  -moz-box-shadow: $layout-elevation-4;
+  box-shadow: $layout-elevation-4;
+
+  .reveal-drawer {
+    right: 0;
+  }
+
+  .detail-wrapper {
+    padding: 18px;
+
+    .wedding-date {
+      @include raleway-bold;
+
+      color: white;
+      font-size: $typography-size-step-up-2;
+      line-height: $typography-lineHeight-step-up-2;
+      text-transform: uppercase;
+    }
+
+    .detail-header {
+      @include italiano;
+
+      color: #ffebd8;
+      font-size: $typography-size-step-up-3;
+      line-height: $typography-lineHeight-step-up-3;
+      border-bottom:2px dashed rgba(#ffebd8, 0.25);
+      margin-bottom: 16px;
+    }
+    .schedule {
+      position: relative;
+      padding: 16px 0;
+      margin-bottom: 16px;
+
+      .schedule-row {
+        margin-bottom: 8px;
+        display: flex;
+        flex-direction: row;
+        color: #ffebd8;
+
+        .description {
+          display: flex;
+          margin-left: 32px;
+        }
+      }
+    }
+    .schedule:before {
+      @include position($position: absolute, $top: 0, $left: 54px, $bottom: 0);
+
+      content: "";
+      display: block;
+      width: 4px;
+      background: rgba(#ffebd8, 0.25);
+
+      -webkit-border-radius: 8px;
+      -moz-border-radius: 8px;
+      border-radius: 8px;
+    }
+    .detail-list {
+      margin-bottom: 16px;
+      color: #ffebd8;
+
+      ul {
+        position: relative;
+        margin: 8px 0;
+        padding: 8px 0 8px 32px;
+
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        border-radius: 8px;
+      }
+      ul:before {
+        @include position($position: absolute, $top: 0, $left: 0, $bottom: 0);
+
+        content: "";
+        display: block;
+        width: 4px;
+        background: rgba(#ffebd8, 0.25);
+
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        border-radius: 8px;
+      }
+    }
+  }
+}

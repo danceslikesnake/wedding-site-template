@@ -1,0 +1,39 @@
+@import "../../utils/styles/all";
+
+#LandingPage {
+  .standard-text {
+    @include body-text;
+    @include raleway-bold;
+
+    text-transform: uppercase;
+    color: #2d7d7d;
+  }
+  .couple-name {
+    @include italiano;
+
+    font-size: 105px;
+    line-height: 104px;
+    color: #eb8ea0;
+    margin-top: 8px;
+  }
+  .wedding-date {
+    @include italiano;
+
+    font-size: 62px;
+    line-height: 62px;
+    margin-top: 16px;
+    color: #eb8ea0;
+  }
+  .wedding-time {
+    @include italiano;
+
+    font-size: 62px;
+    margin-top: 16px;
+    margin-bottom: 32px;
+    color: #eb8ea0;
+  }
+  .divider {
+    border-top:2px dashed #ffebd8;
+    margin-bottom: 24px;
+  }
+}

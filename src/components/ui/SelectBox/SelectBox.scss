@@ -1,0 +1,49 @@
+@import '../../../utils/styles/all';
+
+#SelectBox {
+  .select-label {
+    @include raleway-bold;
+    @include inputLabel;
+
+    display: inline-block;
+    padding: 0 1em;
+    color: #2d7d7d;
+    margin-top: 8px;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .rrs__button {
+    @include raleway-medium;
+    @include input;
+
+    color: #d0e8e8;
+    background: #2d7d7d;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    font-weight: bold;
+  }
+  .rrs--has-changed .rrs__label {
+    @include raleway-medium;
+    @include input;
+
+    color: #d0e8e8;
+    font-weight: bold;
+  }
+  .caret-icon {
+    position: absolute;
+    right: 1rem;
+    top: 1.25rem;
+    fill: #d0e8e8;
+  }
+  .rrs--options-visible .caret-icon {
+    transform: rotate(180deg);
+  }
+}

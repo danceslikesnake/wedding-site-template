@@ -1,0 +1,43 @@
+@import "../../utils/styles/all";
+
+#StepThree {
+  .divider {
+    border-top:2px dashed #ffebd8;
+    margin-bottom: 16px;
+  }
+  .textarea {
+    @include raleway-medium;
+    @include input;
+
+    background: #2d7d7d;
+    color: #d0e8e8;
+    font-weight: bold;
+    padding: 0.8em;
+    width: calc(100% - 0.16em);
+    border: none;
+    outline: none;
+    height: 12rem;
+
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+  }
+  .textarea-label {
+      @include raleway-bold;
+      @include inputLabel;
+
+      display: inline-block;
+      padding: 0 1em;
+      color: #2d7d7d;
+      margin-top: 8px;
+
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+  }
+}
