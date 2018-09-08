@@ -7,17 +7,27 @@
   }
   .qr-code {
     canvas {
-      width: 100% !important;
-      height: 100% !important;
+      width: 35% !important;
+      height: 35% !important;
+
+      @media screen and (min-width: $tablet) {
+        width: 100% !important;
+        height: 100% !important;
+      }
     }
   }
   h2 {
     @include raleway-bold;
 
-    font-size: $typography-size-step-up-2;
-    line-height: $typography-lineHeight-step-up-2;
+    font-size: $typography-size-step-up-1;
+    line-height: $typography-lineHeight-step-up-1;
     text-transform: uppercase;
     color: #2d7d7d;
+
+    @media screen and (min-width: $tablet) {
+      font-size: $typography-size-step-up-2;
+      line-height: $typography-lineHeight-step-up-2;
+    }
   }
   .confirmation-number {
     strong {
@@ -50,5 +60,8 @@
       padding-left: 18px;
       padding-right: 18px;
     }
+  }
+  .additional-notes {
+    margin-bottom: 16px;
   }
 }

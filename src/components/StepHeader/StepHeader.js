@@ -5,11 +5,11 @@ import './StepHeader.css';
 class StepHeader extends Component {
   render() {
     return (
-      <div className="columns">
-        <div className="column">
-          <div className="step-header">Yichun &amp; Jared</div>
+      <div id="StepHeader" className="columns">
+        <div className="column has-text-centered-mobile">
+          <div className="step-header bold-on-mobile">Yichun &amp; Jared</div>
         </div>
-        <div className="column has-text-right">
+        <div className="column has-text-right has-text-centered-mobile">
           <div className="step-header">Friday, September 7th 2018</div>
         </div>
       </div>

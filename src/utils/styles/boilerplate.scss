@@ -100,6 +100,15 @@ body {
   background: #861827;
 }
 
+.long-cta {
+  width: 100%;
+  text-align: left;
+
+  .fas {
+    margin: 0 4px 0 0;
+  }
+}
+
 .cta-link {
   display: block;
   line-height: 40px;
@@ -136,7 +145,7 @@ body {
     margin: 0 8px 0 3px;
   }
   .airbnb-icon {
-    margin-right: 8px;
+    margin-right: 7px;
   }
 }
 .call-to-action-hollow:hover {
@@ -214,6 +223,32 @@ body {
 .detail-drawer-button:hover {
   background: #a02d3c;
 }
+.detail-drawer-button-mobile {
+  @include raleway-bold;
+  @include position($position: fixed, $left: 50%);
+  @include transition($prop: all, $time: 0.2s);
+
+  color: #ffebd8;
+  text-transform: uppercase;
+  text-align: center;
+  width: 200px;
+  line-height: $typography-lineHeight-step-up-2;
+  background: #d84b5b;
+  cursor: pointer;
+  z-index: 1000;
+
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+.detail-drawer-button-mobile:hover {
+  background: #a02d3c;
+}
 .map-wrapper {
   .mapouter{
     text-align:right;
@@ -233,4 +268,41 @@ body {
 }
 .opaque {
   opacity: 1;
+}
+
+.selectBox {
+  select {
+    @include raleway-medium;
+    @include input;
+
+    color: #d0e8e8;
+    background: #2d7d7d;
+    height: 52px;
+    border: none;
+    outline: none;
+    width: 100%;
+    font-weight: bold;
+
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+  }
+  .select-label {
+    @include raleway-bold;
+    @include inputLabel;
+
+    display: inline-block;
+    padding: 0 1em;
+    color: #2d7d7d;
+    margin-top: 8px;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
 }

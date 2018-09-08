@@ -5,4 +5,15 @@
     border-top:2px dashed #ffebd8;
     margin-bottom: 16px;
   }
+  .guest-label {
+    @include raleway-bold;
+
+    margin-bottom: 24px;
+    color: lighten(#2d7d7d, 30);
+
+    .fas {
+      margin-right: 8px;
+      color: #d84b5b;
+    }
+  }
 }

@@ -49,8 +49,12 @@ class App extends Component {
     super(props);
 
     this.state = {
-      step: 4,
-      revealDrawer: false
+      step: 0,
+      revealDrawer: false,
+      rsvpCode: '',
+      emailAddress: '',
+      numberAttending: null,
+      additionalNotes: ''
     }
   }
 
@@ -66,23 +70,33 @@ class App extends Component {
       default:
         return (
           <LandingPage
-            callToAction={() => {
-              this.stepManager(1);
+            callToAction={(rsvpCode) => {
+              if(rsvpCode) {
+                this.setState({rsvpCode: rsvpCode});
+                this.stepManager(1);
+              }
             }}
           />
         );
       case 1:
         return (
           <StepOne
-            callToAction={() => {
-              this.stepManager(2);
+            callToAction={(emailAddress, numberAttending) => {
+              if(emailAddress !== '' && numberAttending) {
+                this.setState({emailAddress: emailAddress, numberAttending: numberAttending});
+                this.stepManager(2);
+              }
             }}
           />
         );
       case 2:
         return (
           <StepTwo
-            callToAction={() => {
+            numberAttending={this.state.numberAttending}
+            callToAction={(guestsAttending) => {
+              if(guestsAttending) {
+                this.setState(guestsAttending);
+              }
               this.stepManager(3);
             }}
           />
@@ -90,28 +104,36 @@ class App extends Component {
       case 3:
         return (
           <StepThree
-            callToAction={() => {
+            callToAction={(additionalNotes) => {
+              this.setState({additionalNotes: additionalNotes});
               this.stepManager(4);
             }}
           />
         );
       case 4:
         return(
-          <FullDetails mapUrl={mapUrl} />
+          <FullDetails
+            mapUrl={mapUrl}
+            guestOne={this.state.guestOne}
+            guestTwo={this.state.guestTwo}
+            additionalNotes={this.state.additionalNotes}
+          />
         );
     }
   };
 
   render() {
+    console.log('home state', this.state);
     return (
       <div>
-        <div className="detail-drawer-button" style={this.state.revealDrawer ? {right: 320} : {right: -80}} onClick={() => {this.setState({revealDrawer: !this.state.revealDrawer})}}>Schedule &amp; Details</div>
+        <div className="detail-drawer-button is-hidden-mobile" style={this.state.revealDrawer ? {right: 320} : {right: -80}} onClick={() => {this.setState({revealDrawer: !this.state.revealDrawer})}}>Schedule &amp; Details</div>
+        <div className="detail-drawer-button-mobile is-invisible-tablet" style={this.state.revealDrawer ? {bottom: '95%'} : {bottom: 0}} onClick={() => {this.setState({revealDrawer: !this.state.revealDrawer})}}>Schedule &amp; Details</div>
         <section className="hero is-fullheight mainBG" style={{backgroundImage: 'url(' + backgroundImg + ')'}}>
           <div className="mainBG-overlay" />
           <div className="hero-body" style={{zIndex: 2}}>
             <div className="container">
               <div className="columns">
-                <div className="column is-three-fifths is-offset-one-fifth">
+                <div className="column is-8-desktop is-offset-2-desktop">
                   <div className="main-content-wrapper">
                     {this.renderStep()}
                   </div>
@@ -119,7 +141,6 @@ class App extends Component {
               </div>
             </div>
           </div>
-
           <DetailDrawer
             revealDrawer={this.state.revealDrawer}
             mapUrl={mapUrl}

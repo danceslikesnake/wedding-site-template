@@ -16,7 +16,7 @@ class DetailDrawer extends Component {
 
   render() {
     return (
-      <div id="DetailDrawer" style={this.props.revealDrawer ? {right: 0} : {right: -400}}>
+      <div id="DetailDrawer" className={this.props.revealDrawer ? 'reveal-drawer' : 'hide-drawer'}>
         <div className="detail-wrapper">
           <div className="wedding-date has-text-centered">FRIDAY, SEPTEMBER 7, 2018 @ 15:00</div>
           <div className="detail-header">Schedule</div>
@@ -43,7 +43,7 @@ class DetailDrawer extends Component {
           <div className="map-wrapper">
             <div className="mapouter">
               <div className="gmap_canvas">
-                <iframe width="100%" height="224" id="gmap_canvas" src={this.props.mapUrl} frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0"></iframe>
+                <iframe title="Location Map" width="100%" height="224" id="gmap_canvas" src={this.props.mapUrl} frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0"></iframe>
               </div>
             </div>
           </div>

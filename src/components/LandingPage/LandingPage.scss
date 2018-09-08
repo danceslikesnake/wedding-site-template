@@ -11,29 +11,44 @@
   .couple-name {
     @include italiano;
 
-    font-size: 105px;
+    font-size: 62px;
     line-height: 104px;
     color: #eb8ea0;
-    margin-top: 8px;
+    margin-bottom: -8px;
+    margin-top: -8px;
+
+    @media screen and (min-width: $tablet) {
+      margin-top: 8px;
+      margin-bottom: 0;
+      font-size: 105px;
+      line-height: 104px;
+    }
   }
   .wedding-date {
     @include italiano;
 
-    font-size: 62px;
-    line-height: 62px;
-    margin-top: 16px;
+    font-size:$typography-size-step-up-4;
+    line-height: $typography-lineHeight-step-up-3;
     color: #eb8ea0;
-  }
-  .wedding-time {
-    @include italiano;
+    margin-top: 16px;
+    margin-bottom: 16px;
 
-    font-size: 62px;
-    margin-top: 16px;
-    margin-bottom: 32px;
-    color: #eb8ea0;
+    @media screen and (min-width: $tablet) {
+      margin-top: 16px;
+      font-size: 62px;
+      line-height: 62px;
+      margin-bottom: 24px;
+    }
   }
   .divider {
     border-top:2px dashed #ffebd8;
     margin-bottom: 24px;
+  }
+  .rsvp-spacer {
+    height: 24px;
+
+    @media screen and (min-width: $tablet) {
+      height: 32px;
+    }
   }
 }

@@ -2,9 +2,8 @@
 
 #DetailDrawer {
   @include transition($prop: right, $time: 0.2s, $easing: ease-out);
-  @include position($position: fixed, $top: 0, $bottom: 0);
+  @include position($position: fixed, $left: 0);
 
-  width: 400px;
   background: #d84b5b;
   z-index: 1000;
   overflow: auto;
@@ -13,8 +12,10 @@
   -moz-box-shadow: $layout-elevation-4;
   box-shadow: $layout-elevation-4;
 
-  .reveal-drawer {
-    right: 0;
+  @media screen and (min-width: $tablet){
+    @include position($position: fixed, $bottom: 0, $left: auto);
+
+    width: 400px;
   }
 
   .detail-wrapper {
@@ -39,6 +40,8 @@
       margin-bottom: 16px;
     }
     .schedule {
+      @include raleway-medium;
+
       position: relative;
       padding: 16px 0;
       margin-bottom: 16px;
@@ -68,6 +71,8 @@
       border-radius: 8px;
     }
     .detail-list {
+      @include raleway-medium;
+
       margin-bottom: 16px;
       color: #ffebd8;
 
@@ -93,5 +98,23 @@
         border-radius: 8px;
       }
     }
+  }
+}
+
+#DetailDrawer.reveal-drawer {
+  top: 5%;
+  bottom: 0;
+
+  @media screen and (min-width: $tablet){
+    right: 0;
+    top: 0;
+  }
+}
+#DetailDrawer.hide-drawer {
+  top: 100%;
+  right: 0;
+
+  @media screen and (min-width: $tablet){
+    right: -400px;
   }
 }

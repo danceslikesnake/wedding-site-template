@@ -26,7 +26,7 @@ class FullDetails extends Component {
     if (window.sidebar) { // Mozilla, Firefox, Netscape
       window.sidebar.addPanel(title, url,"");
     } else if( window.external) { // IE or chrome
-      if (browser.indexOf('chrome')==-1){ // ie
+      if (browser.indexOf('chrome')===-1){ // ie
         window.external.AddFavorite( url, title);
       } else { // chrome
         alert('Please Press CTRL+D (or Command+D for macs) to bookmark this page');
@@ -35,10 +35,10 @@ class FullDetails extends Component {
     else if(window.opera && window.print) { // Opera - automatically adds to sidebar if rel=sidebar in the tag
       return true;
     }
-    else if (browser.indexOf('konqueror')!=-1) { // Konqueror
+    else if (browser.indexOf('konqueror')!==-1) { // Konqueror
       alert('Please press CTRL+B to bookmark this page.');
     }
-    else if (browser.indexOf('webkit')!=-1){ // safari
+    else if (browser.indexOf('webkit')!==-1){ // safari
       alert('Please press CTRL+B (or Command+D for macs) to bookmark this page.');
     } else {
       alert('Your browser cannot add bookmarks using this link. Please add this link manually.')
@@ -63,17 +63,26 @@ class FullDetails extends Component {
         </div>
         <div className="divider" />
         <div className="guests-attending">
-          <div className="final-details-label">ATTENDING</div>
+          <div className="final-details-label">Guest Details</div>
           <div className="columns">
             <div className="column">
-              <p><strong>Guest 1 Name</strong></p>
-              <p>Type of Meal</p>
+              <p><strong>{this.props.guestOne.firstName + ' ' + this.props.guestOne.lastName}</strong></p>
+              <p>{'Meal Preference: ' + this.props.guestOne.meal}</p>
+              <p>{'Availability: ' + this.props.guestOne.availability}</p>
             </div>
             <div className="column">
-              <p><strong>Guest 2 Name</strong></p>
-              <p>Type of Meal</p>
+              {this.props.guestTwo.firstName !== '' ? (
+                <div>
+                  <p><strong>{this.props.guestTwo.firstName + ' ' + this.props.guestTwo.lastName}</strong></p>
+                  <p>{'Meal Preference: ' + this.props.guestTwo.meal}</p>
+                  <p>{'Availability: ' + this.props.guestTwo.availability}</p>
+                </div>
+              ) : (<br />)}
             </div>
           </div>
+          {this.props.additionalNotes !== '' &&
+            <p className="additional-notes">{this.props.additionalNotes}</p>
+          }
         </div>
         <div className="divider" />
         <div className="columns">
@@ -82,21 +91,21 @@ class FullDetails extends Component {
             <div className="map-wrapper">
               <div className="mapouter">
                 <div className="gmap_canvas">
-                  <iframe width="100%" height="224" id="gmap_canvas" src={this.props.mapUrl} frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0"></iframe>
+                  <iframe title="Location Map" width="100%" height="224" id="gmap_canvas" src={this.props.mapUrl} frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0"></iframe>
                 </div>
               </div>
             </div>
           </div>
           <div className="column">
             <div className="final-details-label">OPTIONS</div>
-            <a href="#" target="_blank" className="call-to-action cta-link"><i className="fas fa-envelope-open-text"></i> Change RSVP</a>
-            <a href="#" className="call-to-action-hollow" onClick={() => {
+            <button className="call-to-action long-cta" style={{display: 'block'}} onClick={() => {}}><i className="fas fa-envelope-open-text"></i> Change RSVP</button>
+            <a href="#!" className="call-to-action-hollow" onClick={() => {
               this.addBookmark('https://getwala.com', 'Get Wala');
               return false;
             }}>
               <i className="fas fa-bookmark"></i> Bookmark Confirmation
             </a>
-            <a href="https://www.airbnb.com/s/Lake-de-la-vie--Kragga-Kamma-Road--Port-Elizabeth--South-Africa/homes?refinement_paths%5B%5D=%2Fhomes&query=Lake%20de%20la%20vie%2C%20Kragga%20Kamma%20Road%2C%20Port%20Elizabeth%2C%20South%20Africa&place_id=ChIJAwLuUKPbeh4RCgtILFk190A&allow_override%5B%5D=&s_tag=V_N2UZ35" target="_blank" className="call-to-action-hollow"><img width="16" height="16" alt="airbnb logo" src={AirbnbIcon} className="airbnb-icon" /> Book Airbnb Nearby</a>
+            <a rel="noopener noreferrer" href="https://www.airbnb.com/s/Lake-de-la-vie--Kragga-Kamma-Road--Port-Elizabeth--South-Africa/homes?refinement_paths%5B%5D=%2Fhomes&query=Lake%20de%20la%20vie%2C%20Kragga%20Kamma%20Road%2C%20Port%20Elizabeth%2C%20South%20Africa&place_id=ChIJAwLuUKPbeh4RCgtILFk190A&allow_override%5B%5D=&s_tag=V_N2UZ35" target="_blank" className="call-to-action-hollow"><img width="16" height="16" alt="airbnb logo" src={AirbnbIcon} className="airbnb-icon" /> Book Airbnb Nearby</a>
             <div className="add-to-calendar-btn">
               <AddToCalendar event={event} buttonTemplate={{ 'calendar-plus-o': 'left' }}/>
             </div>

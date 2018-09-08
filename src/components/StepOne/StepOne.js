@@ -1,55 +1,53 @@
 import React, {Component} from 'react';
 
 import StepHeader from '../StepHeader/StepHeader';
+import StepLabels from '../StepLabels/StepLabels';
 import TextField from '../ui/TextField/TextField';
-import SelectBox from '../ui/SelectBox/SelectBox';
 
 import './StepOne.css';
+import 'react-dropdown/style.css';
 
 class StepOne extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      emailAddress: '',
+      numberAttending: null
+    }
+  }
+
   render() {
     return (
       <div id="StepOne">
         <StepHeader />
         <div className="divider" />
-        <div className="columns">
-          <div className="column has-text-centered">
-            <div className="step-name active">Guests</div>
-          </div>
-          <div className="column has-text-centered add-dash">
-            <div className="step-name">Details</div>
-          </div>
-          <div className="column has-text-centered">
-            <div className="step-name">Notes</div>
-          </div>
-        </div>
+        <StepLabels stepName={'Guests'} />
         <div>
           <TextField
             label={'Email Address'}
             additionalClasses="full-width-input"
             onChangeText={(value) => {
-              //console.log(value);
+              this.setState({emailAddress: value});
             }}
           />
         </div>
         <div className="columns">
           <div className="column is-one-third">
-            <SelectBox
-              label={'Total in your party'}
-              options={[
-                { value: 0, text: '0' },
-                { value: 1, text: '1' },
-                { value: 2, text: '2' }
-              ]}
-              noSelectionLabel="Select..."
-              onSelect={(option) => {
-                console.log(option)
-              }}
-            />
+            <div className="selectBox">
+              <select onChange={(event) => {
+                this.setState({numberAttending: parseInt(event.target.value)});
+              }}>
+                <option>Select...</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+              </select>
+              <label className="select-label">Total in your party</label>
+            </div>
           </div>
         </div>
         <div className="has-text-right">
-          <button className="call-to-action" onClick={() => {this.props.callToAction();}}>Continue</button>
+          <button className="call-to-action" onClick={() => {this.props.callToAction(this.state.emailAddress, this.state.numberAttending)}}>Continue</button>
         </div>
       </div>
     );

@@ -11,6 +11,14 @@ const caretIcon = (
 );
 
 class SelectBox extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      selected: null
+    }
+  }
+
   render() {
     return (
       <div id="SelectBox">
@@ -21,6 +29,7 @@ class SelectBox extends Component {
           onChange={(newValue) => {
             this.props.onSelect(newValue);
           }}
+          noSelectionLabel={'Select...'}
         />
         <label className="select-label">{this.props.label}</label>
       </div>

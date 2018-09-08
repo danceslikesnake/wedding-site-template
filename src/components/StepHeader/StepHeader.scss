@@ -1,1 +1,11 @@
 @import "../../utils/styles/all";
+
+#StepHeader {
+  .bold-on-mobile {
+    font-size: $typography-size-step-up-4;
+
+    @media screen and (min-width: $tablet) {
+      font-size: $typography-size-step-up-3;
+    }
+  }
+}
