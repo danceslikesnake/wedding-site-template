@@ -85,6 +85,7 @@ body {
   padding-left: 16px;
   padding-right: 16px;
   cursor: pointer;
+  margin-bottom: 8px;
 
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
@@ -97,6 +98,50 @@ body {
 
 .call-to-action:active {
   background: #861827;
+}
+
+.cta-link {
+  display: block;
+  line-height: 40px;
+  font-size: $typography-size-base;
+
+  .fas {
+    margin: 0 8px 0 3px;
+  }
+}
+
+.cta-link:hover {
+  color: #ffebd8;
+}
+
+.call-to-action-hollow {
+  @include raleway-bold;
+  @include transition($prop: background, $time: 0.2s);
+
+  line-height: 40px;
+  border:2px solid #b3d8d8;
+  color: #2d7d7d;
+  outline: none;
+  padding-left: 16px;
+  padding-right: 16px;
+  cursor: pointer;
+  display: block;
+  margin-bottom: 8px;
+
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+
+  .fas {
+    margin: 0 8px 0 3px;
+  }
+  .airbnb-icon {
+    margin-right: 8px;
+  }
+}
+.call-to-action-hollow:hover {
+  background: rgba(#2d7d7d, 0.1);
+  color: #2d7d7d;
 }
 
 .full-width-input {

@@ -36,4 +36,19 @@
     text-transform: uppercase;
     margin-bottom: 16px;
   }
+  .add-to-calendar-btn {
+    padding-top: 4px;
+
+    .react-add-to-calendar__button {
+      @include raleway-bold;
+
+      line-height: 40px;
+      border:2px solid #b3d8d8;
+      color: #2d7d7d;
+      border-radius: 8px;
+      background: white;
+      padding-left: 18px;
+      padding-right: 18px;
+    }
+  }
 }

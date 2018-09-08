@@ -1,11 +1,50 @@
 import React, {Component} from 'react';
 import QRCode from 'qrcode.react';
+import AddToCalendar from 'react-add-to-calendar';
 
 import StepHeader from '../StepHeader/StepHeader';
 
 import './FullDetails.css';
+import 'react-add-to-calendar/dist/react-add-to-calendar.min.css';
+
+import AirbnbIcon from '../../utils/images/airbnb-icon.png';
+
+const event = {
+  title: 'Yichun & Jared\'s Wedding',
+  description: 'This is the sample event provided as an example only',
+  location: 'Port Elizabeth, SA',
+  startTime: '2018-09-07T17:00:00-00:00',
+  endTime: '2018-09-07T17:00:00-00:00'
+};
 
 class FullDetails extends Component {
+
+  addBookmark = (url, title) => {
+    if (!url) {url = window.location}
+    if (!title) {title = document.title}
+    var browser=navigator.userAgent.toLowerCase();
+    if (window.sidebar) { // Mozilla, Firefox, Netscape
+      window.sidebar.addPanel(title, url,"");
+    } else if( window.external) { // IE or chrome
+      if (browser.indexOf('chrome')==-1){ // ie
+        window.external.AddFavorite( url, title);
+      } else { // chrome
+        alert('Please Press CTRL+D (or Command+D for macs) to bookmark this page');
+      }
+    }
+    else if(window.opera && window.print) { // Opera - automatically adds to sidebar if rel=sidebar in the tag
+      return true;
+    }
+    else if (browser.indexOf('konqueror')!=-1) { // Konqueror
+      alert('Please press CTRL+B to bookmark this page.');
+    }
+    else if (browser.indexOf('webkit')!=-1){ // safari
+      alert('Please press CTRL+B (or Command+D for macs) to bookmark this page.');
+    } else {
+      alert('Your browser cannot add bookmarks using this link. Please add this link manually.')
+    }
+  };
+
   render() {
     return (
       <div id="FullDetails">
@@ -50,6 +89,17 @@ class FullDetails extends Component {
           </div>
           <div className="column">
             <div className="final-details-label">OPTIONS</div>
+            <a href="#" target="_blank" className="call-to-action cta-link"><i className="fas fa-envelope-open-text"></i> Change RSVP</a>
+            <a href="#" className="call-to-action-hollow" onClick={() => {
+              this.addBookmark('https://getwala.com', 'Get Wala');
+              return false;
+            }}>
+              <i className="fas fa-bookmark"></i> Bookmark Confirmation
+            </a>
+            <a href="https://www.airbnb.com/s/Lake-de-la-vie--Kragga-Kamma-Road--Port-Elizabeth--South-Africa/homes?refinement_paths%5B%5D=%2Fhomes&query=Lake%20de%20la%20vie%2C%20Kragga%20Kamma%20Road%2C%20Port%20Elizabeth%2C%20South%20Africa&place_id=ChIJAwLuUKPbeh4RCgtILFk190A&allow_override%5B%5D=&s_tag=V_N2UZ35" target="_blank" className="call-to-action-hollow"><img width="16" height="16" alt="airbnb logo" src={AirbnbIcon} className="airbnb-icon" /> Book Airbnb Nearby</a>
+            <div className="add-to-calendar-btn">
+              <AddToCalendar event={event} buttonTemplate={{ 'calendar-plus-o': 'left' }}/>
+            </div>
           </div>
         </div>
       </div>

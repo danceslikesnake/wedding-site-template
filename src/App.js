@@ -49,7 +49,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      step: 0,
+      step: 4,
       revealDrawer: false
     }
   }
