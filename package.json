@@ -18,7 +18,7 @@
     "react-ga": "^2.5.3",
     "react-headroom": "^2.2.2",
     "react-image-palette": "^0.2.4",
-    "react-router-dom": "^4.2.2",
+    "react-router-dom": "^4.3.1",
     "react-scroll": "^1.7.6",
     "react-slick": "^0.18.1",
     "validator": "^10.7.1"

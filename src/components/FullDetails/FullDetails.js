@@ -12,10 +12,10 @@ import AirbnbIcon from '../../utils/images/airbnb-icon.png';
 
 const event = {
   title: 'Yichun & Jared\'s Wedding',
-  description: 'This is the sample event provided as an example only',
-  location: 'Port Elizabeth, SA',
-  startTime: '2018-09-07T17:00:00-00:00',
-  endTime: '2018-09-07T17:00:00-00:00'
+  description: 'Yichun & Jared\'s Wedding',
+  location: 'Lake de la vie, 328 Kragga Kamma Rd, Lorraine, Port Elizabeth, 6070, South Africa',
+  startTime: '2018-12-07T13:00:00-00:00',
+  endTime: '2018-12-07T21:30:00-00:00'
 };
 
 class FullDetails extends Component {
@@ -47,12 +47,16 @@ class FullDetails extends Component {
   };
 
   renderGuestDetails = (guest) => {
+    if(!guest.shuttleService){
+      guest.shuttleService = 'N/A'
+    }
     return (
       <div className="columns">
         <div className="column">
           <p><strong>{guest.firstName + ' ' + guest.lastName}</strong></p>
           <p>{'Meal Preference: ' + guest.meal}</p>
           <p>{'Availability: ' + guest.availability}</p>
+          <p>{'Shuttle Service: ' + guest.shuttleService}</p>
         </div>
       </div>
     );
@@ -66,12 +70,12 @@ class FullDetails extends Component {
         <div className="columns qr-code-and-confirmation">
           <div className="column is-one-fifth">
             <div className="qr-code">
-              <QRCode value="http://facebook.github.io/react/" width={'100%'} />
+              <QRCode value={`https://yichunjaredweds.com/${this.props.rsvpCode}`} width={'100%'} />
             </div>
           </div>
           <div className="column is-four-fifths">
             <h2>Thank you for your RSVP</h2>
-            <p className="confirmation-number">Your Confirmation number is <strong>8ykjhas</strong></p>
+            <p className="confirmation-number">Please save your QR Code for easy access to this information. Your RSVP Code is <strong>{this.props.rsvpCode}</strong></p>
           </div>
         </div>
         <div className="divider" />
@@ -97,7 +101,7 @@ class FullDetails extends Component {
           <div className="column">
             <div className="final-details-label">OPTIONS</div>
             <button className="call-to-action long-cta" style={{ display: 'block' }}
-              onClick={() => {this.props.stepManager(2)}}>
+              onClick={() => { this.props.stepManager(2) }}>
               <i className="fas fa-envelope-open-text"></i> Change RSVP</button>
             <a href="#!" className="call-to-action-hollow" onClick={() => {
               this.addBookmark('https://yichunjaredweds.com/', 'Yichun and Jared Ties the Knot');

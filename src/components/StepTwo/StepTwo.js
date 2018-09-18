@@ -73,11 +73,22 @@ class StepTwo extends Component {
                 <option>Select...</option>
                 <option value="Meat">Meat</option>
                 <option value="Vegetarian">Vegetarian</option>
-                <option value="Vegan">Vegan</option>
               </select>
               <label className="select-label">Meal</label>
             </div>
           </div>
+          <div className="column">
+          <div className="selectBox">
+            <select onChange={(event) => {
+              this.handleInputs(guest, 'shuttleService', event.target.value);
+            }}>
+              <option>Select...</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+            <label className="select-label">Shuttle Service To The Venue</label>
+          </div>
+        </div>
         </div>
       </div>)
   }

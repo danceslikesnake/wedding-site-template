@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 // components
 import LandingPage from './components/LandingPage/LandingPage';
 import StepOne from './components/StepOne/StepOne';
@@ -62,6 +63,12 @@ class App extends Component {
     }
   }
 
+  componentDidMount(){
+    if(this.props.match && this.props.match.params && this.props.match.params.rsvpCode){
+      this.getRspv(this.props.match.params.rsvpCode);
+    }
+  }
+
   stepManager = (step) => {
     this.setState({
       step: step
@@ -71,14 +78,16 @@ class App extends Component {
   getRspv = (rsvpCode) => {
     this.setState({ rsvpCode: rsvpCode });
     RsvpService.getInvitation(rsvpCode).then(invitationDetails => {
-
+      if(!invitationDetails){
+        return;
+      }
       if (_.isEmpty(invitationDetails.guests)) {
         if (invitationDetails && invitationDetails.party) {
           this.setState({ numberAttending: invitationDetails.party },
             () => this.stepManager(1));
         }
       }
-      else{
+      else {
         this.setState({
           numberAttending: invitationDetails.party,
           emailAddress: invitationDetails.email,
@@ -87,7 +96,7 @@ class App extends Component {
           rsvpCode: invitationDetails.rsvpCode,
           revealDrawer: true
         },
-        () => this.stepManager(4))
+          () => this.stepManager(4))
       }
     });
   }
@@ -145,9 +154,10 @@ class App extends Component {
       case 4:
         return (
           <FullDetails
-           stepManager={this.stepManager}
+            stepManager={this.stepManager}
             mapUrl={mapUrl}
             guests={this.state.guests}
+            rsvpCode={this.state.rsvpCode}
             additionalNotes={this.state.additionalNotes}
           />
         );
