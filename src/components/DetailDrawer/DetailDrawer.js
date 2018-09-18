@@ -18,7 +18,7 @@ class DetailDrawer extends Component {
     return (
       <div id="DetailDrawer" className={this.props.revealDrawer ? 'reveal-drawer' : 'hide-drawer'}>
         <div className="detail-wrapper">
-          <div className="wedding-date has-text-centered">FRIDAY, SEPTEMBER 7, 2018 @ 15:00</div>
+          <div className="wedding-date has-text-centered">FRIDAY, December 7, 2018 @ 15:00</div>
           <div className="detail-header">Schedule</div>
           <ul className="schedule">
             {this.props.schedule.map((event, idx) => (

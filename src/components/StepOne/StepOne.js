@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 import StepHeader from '../StepHeader/StepHeader';
 import StepLabels from '../StepLabels/StepLabels';
@@ -17,6 +17,15 @@ class StepOne extends Component {
     }
   }
 
+  renderNumberAttending = () => {
+    let items = [];
+    items.push(<option>Select...</option>);
+    for (let i = 1; i <= this.props.numberAttending; i++) {
+      items.push(<option value={i}>{i}</option>);
+    }
+    return items;
+  }
+
   render() {
     return (
       <div id="StepOne">
@@ -28,7 +37,7 @@ class StepOne extends Component {
             label={'Email Address'}
             additionalClasses="full-width-input"
             onChangeText={(value) => {
-              this.setState({emailAddress: value});
+              this.setState({ emailAddress: value });
             }}
           />
         </div>
@@ -36,18 +45,16 @@ class StepOne extends Component {
           <div className="column is-one-third">
             <div className="selectBox">
               <select onChange={(event) => {
-                this.setState({numberAttending: parseInt(event.target.value)});
+                this.setState({ numberAttending: parseInt(event.target.value) });
               }}>
-                <option>Select...</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
+              {this.renderNumberAttending()}
               </select>
               <label className="select-label">Total in your party</label>
             </div>
           </div>
         </div>
         <div className="has-text-right">
-          <button className="call-to-action" onClick={() => {this.props.callToAction(this.state.emailAddress, this.state.numberAttending)}}>Continue</button>
+          <button className="call-to-action" onClick={() => { this.props.callToAction(this.state.emailAddress, this.state.numberAttending) }}>Continue</button>
         </div>
       </div>
     );

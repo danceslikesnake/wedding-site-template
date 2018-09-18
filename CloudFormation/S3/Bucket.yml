@@ -1,0 +1,6 @@
+Bucket:
+  Type: AWS::S3::Bucket
+  DeletionPolicy: Retain
+  Properties:
+      BucketName: logs-${self:custom.profiles.${self:provider.stage}.BUCKET_NAME}
+      AccessControl: LogDeliveryWrite

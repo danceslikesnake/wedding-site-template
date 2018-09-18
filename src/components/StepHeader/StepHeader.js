@@ -10,7 +10,7 @@ class StepHeader extends Component {
           <div className="step-header bold-on-mobile">Yichun &amp; Jared</div>
         </div>
         <div className="column has-text-right has-text-centered-mobile">
-          <div className="step-header">Friday, September 7th 2018</div>
+          <div className="step-header">Friday, December 7th 2018</div>
         </div>
       </div>
     );

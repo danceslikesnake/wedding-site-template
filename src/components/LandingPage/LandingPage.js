@@ -19,7 +19,7 @@ class LandingPage extends Component {
         <p className="standard-text">Please Join</p>
         <h1 className="couple-name">Yichun & Jared</h1>
         <p className="standard-text">FOR THEIR WEDDING CEREMONY & RECEPTION</p>
-        <h1 className="wedding-date">Friday, September 7th, 2018 @15:00</h1>
+        <h1 className="wedding-date">Friday, December 7th, 2018 @15:00</h1>
         <div className="divider" />
         <p className="standard-text">To Get Started, Please Enter Your RSVP Code</p>
         <div className="rsvp-spacer" />

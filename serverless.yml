@@ -1,0 +1,72 @@
+service: wedding-site
+package:
+    include:
+        - backendSrc/**
+provider:
+    name: aws
+    stage: ${opt:stage, self:custom.defaultStage}
+    region: eu-west-1
+    runtime: nodejs8.10
+    iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:DescribeTable
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+      Resource:
+        - arn:aws:dynamodb:${self:provider.region}:${self:custom.profiles.${self:provider.stage}.AWS_ACCOUNT_NUMBER}:table/Rsvps
+
+functions:
+    getInvitation: 
+      handler: backendSrc/rsvps/handler.getInvitation
+      events:
+        - http:
+            path: ${self:custom.fullstack.apiPath}/getInvitation/{rsvpCode}
+            method: get
+            cors: true
+            integration: lambda
+    updateInvitation:
+      handler: backendSrc/rsvps/handler.updateInvitation
+      events:
+        - http:
+            path: ${self:custom.fullstack.apiPath}/updateInvitation
+            method: post
+            cors: true
+            integration: lambda
+
+plugins:
+  - fullstack-serverless 
+custom:
+    prune:
+        automatic: true
+        number: 1
+    defaultStage: personal
+    profiles:
+        personal: 
+          AWS_PROFILE: personal
+          AWS_ACCOUNT_NUMBER: 190236274723
+          BUCKET_NAME: yichunjaredweds
+    fullstack:
+      domain: yichunjaredweds.com
+      certificate: arn:aws:acm:us-east-1:190236274723:certificate/7961f751-f221-4858-af3b-8823fd73c8cf     # The ARN for the SSL cert to use form AWS CertificateManager 
+      bucketName: ${self:custom.profiles.${self:provider.stage}.BUCKET_NAME}                # Unique name for the S3 bucket to host the client assets 
+      distributionFolder: build            # Path to the client assets to be uploaded to S3 
+      indexDocument: index.html                  # The index document to use 
+      errorDocument: index.html                  # The error document to use 
+      singlePageApp: true                       # If true 403 errors will be rerouted (missing assets) to your root index document to support single page apps like React and Angular where the js framework handles routing 
+      apiPath: api                               # The path prefix for your API Gateway lambdas. The path for the lambda http event trigger needs to start with this too eg. api/myMethod  
+      clientCommand: yarn build                   # Command to generate the client assets. Defaults to doing nothing 
+      clientSrcPath: ./                      # The path to where you want to run the clientCommand 
+      #waf: 00000000-0000-0000-0000-000000000000  # ID of the Web Application Firewall. Defaults to not used 
+    #   logging:
+    #     bucket: logs-${self:custom.profiles.${self:provider.stage}.BUCKET_NAME}
+    #     prefix: logs
+
+resources:
+  Resources:
+    RsvpsDynamoDBTable: ${file(./CloudFormation/DynamoDB/Rsvps.yml):Table}
+    Bucket: ${file(./CloudFormation/S3/Bucket.yml):Bucket}
+    # BucketPolicy: ${file(./CloudFormation/S3/BucketPolicy.yml):BucketPolicy}

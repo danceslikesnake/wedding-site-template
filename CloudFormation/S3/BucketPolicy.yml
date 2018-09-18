@@ -1,0 +1,13 @@
+BucketPolicy:
+  Type: AWS::S3::BucketPolicy
+  Properties:
+      Bucket:
+          Ref: Bucket
+      PolicyDocument:
+          Statement:
+              -
+                  Action:
+                      - s3:GetObject
+                  Effect: Allow
+                  Resource: "arn:aws:s3:::${self:service}-${self:provider.stage}-${self:custom.profiles.${self:provider.stage}.BUCKET_NAME}/*"
+                  Principal: "*"
