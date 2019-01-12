@@ -79,6 +79,16 @@ class FullDetails extends Component {
           </div>
         </div>
         <div className="divider" />
+        <div className="columns qr-code-and-confirmation">
+          <div className="column is-five-fifths">
+            <h2>Gift Registry</h2>
+            <p className="confirmation-number">Bank: FNB</p>
+            <p className="confirmation-number">Account Number: 62486398483</p>
+            <p className="confirmation-number">Branch Code: 250655</p>
+            </div>
+        </div>
+
+        <div className="divider" />
         <div className="guests-attending">
           <div className="final-details-label">Guest Details</div>
           {_.map(this.props.guests, x => this.renderGuestDetails(x))}
@@ -103,12 +113,6 @@ class FullDetails extends Component {
             <button className="call-to-action long-cta" style={{ display: 'block' }}
               onClick={() => { this.props.stepManager(2) }}>
               <i className="fas fa-envelope-open-text"></i> Change RSVP</button>
-            <a href="#!" className="call-to-action-hollow" onClick={() => {
-              this.addBookmark('https://yichunjaredweds.com/', 'Yichun and Jared Ties the Knot');
-              return false;
-            }}>
-              <i className="fas fa-bookmark"></i> Bookmark Confirmation
-            </a>
             <a rel="noopener noreferrer" href="https://www.airbnb.com/s/Lake-de-la-vie--Kragga-Kamma-Road--Port-Elizabeth--South-Africa/homes?refinement_paths%5B%5D=%2Fhomes&query=Lake%20de%20la%20vie%2C%20Kragga%20Kamma%20Road%2C%20Port%20Elizabeth%2C%20South%20Africa&place_id=ChIJAwLuUKPbeh4RCgtILFk190A&allow_override%5B%5D=&s_tag=V_N2UZ35" target="_blank" className="call-to-action-hollow"><img width="16" height="16" alt="airbnb logo" src={AirbnbIcon} className="airbnb-icon" /> Book Airbnb Nearby</a>
             <div className="add-to-calendar-btn">
               <AddToCalendar event={event} buttonTemplate={{ 'calendar-plus-o': 'left' }} />

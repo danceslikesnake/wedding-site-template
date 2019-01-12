@@ -4,6 +4,7 @@
 const baseUrl = `https://yichunjaredweds.com/api/`;
 
 module.exports.getInvitation = (rsvp) => {
+  rsvp = rsvp.toLowerCase();
   const url = `${baseUrl}getInvitation/${rsvp}`;
   return fetch(url, {
     method: 'GET',

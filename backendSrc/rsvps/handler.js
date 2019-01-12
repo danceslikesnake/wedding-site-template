@@ -1,6 +1,5 @@
 'use strict';
 
-const _ = require('lodash');
 const AWS = require('aws-sdk');
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 const bunyan = require('bunyan');
@@ -40,13 +39,15 @@ module.exports.getInvitation = async (event, context, callback) => {
 module.exports.updateInvitation = (event, context, callback) => {
   log.info({ event }, 'updateInvitation');
   const body = event.body;
-  const rsvpCode = body.rsvpCode || undefined;
+  let rsvpCode = body.rsvpCode || undefined;
+  rsvpCode = rsvpCode.toLowerCase();
+  let customNote = body.additionalNotes || 'No Note Added';
   const updateParams = {
     TableName: 'Rsvps',
     Key: {
       rsvpCode
     },
-    UpdateExpression: 'SET #guests = :guests, #lastUpdated = :lastUpdated, #customNote = :customNote, #email = :email', 
+    UpdateExpression: 'SET #guests = :guests, #lastUpdated = :lastUpdated, #customNote = :customNote, #email = :email',
     ExpressionAttributeNames: {
       '#guests': 'guests',
       '#customNote': 'customNote',
@@ -55,7 +56,7 @@ module.exports.updateInvitation = (event, context, callback) => {
     },
     ExpressionAttributeValues: {
       ':guests': body.guests,
-      ':customNote': body.additionalNotes,
+      ':customNote': customNote,
       ':email': body.emailAddress,
       ':lastUpdated': moment.utc().toISOString(),
     }
@@ -66,14 +67,3 @@ module.exports.updateInvitation = (event, context, callback) => {
   });
 };
 
-// let rspv = {
-//   party: 2,
-//   email: '',
-//   guests: [{
-//     firstName:'',
-//     lastName:'',
-//     availability: '',
-//     mealSelection: '',
-//   }],
-//   customNote: ''
-// };

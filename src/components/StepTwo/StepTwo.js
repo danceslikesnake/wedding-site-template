@@ -59,8 +59,8 @@ class StepTwo extends Component {
                 this.handleInputs(guest, 'availability', event.target.value);
               }}>
                 <option>Select...</option>
-                <option value="Can Make It">Can make it</option>
-                <option value="Can't Make It">Can't make it</option>
+                <option value="Accept with Pleasure">Accept with Pleasure</option>
+                <option value="Regretfully Declines">Regretfully Declines</option>
               </select>
               <label className="select-label">Availability</label>
             </div>
@@ -71,8 +71,8 @@ class StepTwo extends Component {
                 this.handleInputs(guest, 'meal', event.target.value);
               }}>
                 <option>Select...</option>
-                <option value="Meat">Meat</option>
-                <option value="Vegetarian">Vegetarian</option>
+                <option value="Omnivores">Omnivores</option>
+                <option value="Herbivores">Vegetarian</option>
               </select>
               <label className="select-label">Meal</label>
             </div>

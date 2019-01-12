@@ -16,9 +16,9 @@ class LandingPage extends Component {
   render() {
     return (
       <div id="LandingPage" className="has-text-centered">
-        <p className="standard-text">Please Join</p>
         <h1 className="couple-name">Yichun & Jared</h1>
-        <p className="standard-text">FOR THEIR WEDDING CEREMONY & RECEPTION</p>
+        <p className="standard-text">TOGETHER WITH THEIR FAMILIES</p>
+        <p className="standard-text">INVITE YOU TO CELEBRATE THEIR MARRIAGE</p>
         <h1 className="wedding-date">Friday, December 7th, 2018 @15:00</h1>
         <div className="divider" />
         <p className="standard-text">To Get Started, Please Enter Your RSVP Code</p>
